@@ -1,0 +1,1208 @@
+/* =========================================
+   CSS UNTUK POP-UP BIODATA (MODAL)
+   ========================================= */
+.modal-overlay {
+    display: none; /* Disembunyikan secara default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+}
+
+.biodata-title {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1ed598;
+    padding-bottom: 5px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.biodata-list {
+    list-style: none;
+    padding: 0;
+}
+
+.biodata-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #34495e;
+    border-bottom: 1px dashed #ecf0f1;
+    padding-bottom: 8px;
+}
+
+.biodata-list li:last-child {
+    border-bottom: none;
+}
+
+.biodata-list strong {
+    color: #2c3e50;
+    display: inline-block;
+    width: 130px; /* Agar teks rapi sejajar */
+}
+
+/* Pastikan kartu pengurus dan anggota punya kursor jari saat diarahkan */
+.card, .siswa-card {
+    cursor: pointer;
+}
+.welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #07dad6); /* Warna layar awal */
+            z-index: 99999; /* Z-index tertinggi agar menutupi semuanya */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+        }
+
+        /* Class ini akan ditambahkan oleh JavaScript saat tombol dipencet */
+        .welcome-screen.hidden {
+            opacity: 0;
+            transform: translateY(-100%); /* Efek layar terangkat ke atas */
+            pointer-events: none;
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            animation: fadeInWelcome 1s ease-in-out;
+        }
+
+        @keyframes fadeInWelcome {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .welcome-content h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .welcome-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        #enter-btn {
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        #enter-btn:hover {
+            background: #1ed598;
+            color: white;
+            transform: scale(1.1); /* Tombol membesar dikit saat disentuh */
+        }
+
+        @media (max-width: 600px) {
+            .welcome-content h2 { font-size: 2rem; }
+            .welcome-content p { font-size: 1rem; }
+        }
+        /* =========================================
+   CSS TRANSISI ANTAR HALAMAN (MENU) - REVISI
+   ========================================= */
+/* Sembunyikan semua ID halaman secara default */
+#beranda, #tentang, #pengurus, #anggota, #jadwal {
+    display: none;
+    animation: fadeSlideUp 0.5s ease-in-out forwards;
+}
+
+/* Hanya tampilkan yang memiliki class active-page */
+#beranda.active-page, 
+#tentang.active-page, 
+#pengurus.active-page, 
+#anggota.active-page, 
+#jadwal.active-page {
+    display: block;
+}
+
+/* Animasi memudar dan naik ke atas secara halus */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================================
+           CSS TAMBAHAN UNTUK GALERI, PIKET, & MEDIA
+           ========================================= */
+        /* Kotak Jadwal Piket & Media */
+        .piket-box, .media-box {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .piket-box ul, .media-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .piket-box li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 1rem;
+        }
+
+        /* Grid untuk Galeri Foto */
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .galeri-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .galeri-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .galeri-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .galeri-item p {
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* Tombol Link Instagram & Spotify */
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .btn-social {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-ig {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .btn-spotify {
+            background: #1DB954;
+        }
+
+        .btn-social:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        /* =========================================
+   PERBAIKAN TAMPILAN KHUSUS HANDPHONE (MOBILE)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* 1. Memperbaiki Beranda agar tidak terpotong di HP */
+    .hero {
+        width: 92%;
+        aspect-ratio: unset;       /* Membebaskan rasio agar menyesuaikan isi teks */
+        min-height: 280px;         /* Tinggi minimal yang pas di HP */
+        margin: 15px auto;
+        padding: 25px 15px;
+        border-radius: 12px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;         /* Ukuran font disesuaikan di layar kecil */
+        margin-bottom: 8px;
+    }
+
+    .hero p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    /* 2. Mengubah Pengurus Menjadi 2 Kolom (Berjajar Dua-Dua) */
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Membuatnya jadi 2 kolom sejajar */
+        gap: 12px;
+        padding: 0 5px;
+    }
+
+    .card {
+        width: 100%;             /* Mengikuti lebar kolom grid */
+        padding: 15px 10px;
+        margin-bottom: 0;        /* Menghilangkan jarak bawah bawaan flexbox */
+    }
+
+    .card img {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 8px;
+    }
+
+    .card h3 {
+        font-size: 0.85rem;      /* Ukuran nama pengurus disesuaikan */
+        line-height: 1.2;
+    }
+
+    .card p {
+        font-size: 0.75rem;      /* Ukuran jabatan pengurus */
+    }
+
+    /* 3. Menyesuaikan Container Utama */
+    .container {
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    /* 4. Menyesuaikan Menu Navigasi di Atas agar muat */
+    nav {
+        gap: 6px;
+        padding: 5px;
+    }
+
+    nav a {
+        font-size: 0.75rem;
+        padding: 3px 6px;
+    }
+}
+/* =========================================
+   CSS LIGHTBOX GALERI (POP-UP FOTO)
+   ========================================= */
+.galeri-item img {
+    cursor: pointer; /* Kursor jadi jari saat diarahkan ke foto */
+    transition: transform 0.3s ease;
+}
+
+.galeri-item img:hover {
+    transform: scale(1.05); /* Foto sedikit membesar saat disentuh */
+}
+
+/* Kotak Overlay Pop-up Foto */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Latar belakang gelap transparan */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.lightbox-modal.active {
+    display: flex;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    color: white;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.lightbox-close:hover {
+    color: #1ed598;
+}
+/* =========================================
+   TAMBAHAN CSS FITUR INTERAKTIF (VERSI 5.0)
+   ========================================= */
+
+/* Tombol Dark/Light Mode di Pojok */
+.theme-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 999;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+.theme-toggle-btn:hover { transform: scale(1.1); }
+
+/* Tema Dark Mode */
+body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #f1f1f1 !important;
+}
+body.dark-mode .jadwal-box, 
+body.dark-mode .piket-box, 
+body.dark-mode .media-box,
+body.dark-mode .card,
+body.dark-mode .galeri-item,
+body.dark-mode .guestbook-box {
+    background: #2d2d2d !important;
+    color: white !important;
+}
+body.dark-mode .section-title,
+body.dark-mode .galeri-item p {
+    color: #1ed598 !important;
+}
+
+/* Kotak Hitung Mundur Kelulusan */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+.countdown-box {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 70px;
+    text-align: center;
+    color: #2c3e50;
+}
+.countdown-box span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    color: #3498db;
+}
+body.dark-mode .countdown-box {
+    background: #2d2d2d;
+    color: white;
+}
+
+/* Buku Tamu / Pesan Kesan */
+.guestbook-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+.guestbook-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.guestbook-form input, .guestbook-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+.guestbook-form button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.guestbook-form button:hover { background: #2980b9; }
+
+.messages-list {
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.message-item {
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    text-align: left;
+}
+body.dark-mode .message-item {
+    background: #383838;
+}
+.message-item h4 { font-size: 0.95rem; color: #2c3e50; }
+body.dark-mode .message-item h4 { color: #1ed598; }
+.message-item p { font-size: 0.85rem; color: #555; }
+body.dark-mode .message-item p { color: #ccc; }
+/* =========================================
+   TAMBAHAN CSS DARK MODE
+   ========================================= */
+body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #f1f1f1 !important;
+}
+body.dark-mode .jadwal-box, 
+body.dark-mode .piket-box, 
+body.dark-mode .media-box,
+body.dark-mode .card,
+body.dark-mode .galeri-item,
+body.dark-mode .guestbook-box,
+body.dark-mode .modal-content {
+    background: #2d2d2d !important;
+    color: white !important;
+}
+body.dark-mode .section-title,
+body.dark-mode .galeri-item p,
+body.dark-mode .biodata-title {
+    color: #1ed598 !important;
+}
+body.dark-mode .card p,
+body.dark-mode .biodata-list li {
+    color: #ccc !important;
+}
+/* =========================================
+   TAMBAHAN CSS TOMBOL HAPUS PESAN & ADMIN
+   ========================================= */
+.message-item {
+    position: relative;
+    padding-right: 35px; /* Memberikan jarak agar teks tidak menabrak tombol hapus */
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: #e74c3c;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.delete-btn:hover {
+    transform: scale(1.3);
+}
+
+.admin-login-trigger {
+    background: none;
+    border: none;
+    color: #95a5a6;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 12px;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+.admin-login-trigger:hover {
+    color: #1ed598;
+}
+/* =========================================
+   TAMBAHAN CSS POP-UP ADMIN & HAPUS PESAN
+   ========================================= */
+.admin-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+.admin-modal-overlay.active {
+    display: flex;
+}
+.admin-modal-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+body.dark-mode .admin-modal-box {
+    background: #2d2d2d;
+    color: white;
+}
+.admin-modal-box h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+body.dark-mode .admin-modal-box h3 {
+    color: #1ed598;
+}
+.admin-modal-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.admin-modal-btn-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.admin-btn-submit {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.admin-btn-cancel {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* =========================================
+   TAMBAHAN CSS KELAS & SENSOR NAMA
+   ========================================= */
+.message-item h4 .user-class {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #3498db;
+    background: #eef7fc;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    display: inline-block;
+}
+
+body.dark-mode .message-item h4 .user-class {
+    background: #1e3a3a;
+    color: #1ed598;
+}
+/* =========================================
+   PERBAIKAN TAMPILAN POP-UP ADMIN
+   ========================================= */
+.admin-modal-box .admin-btn-submit,
+.admin-modal-box .admin-btn-cancel {
+    cursor: pointer !important;
+    z-index: 99999 !important;
+    position: relative !important;
+}
+/* =========================================
+   1. TOMBOL NAVIGASI GELEMBUNG / KOTAK INTERAKTIF
+   ========================================= */
+header nav a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 4px 3px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 20px; /* Bentuk Gelembung / Pill Button */
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+header nav a:hover {
+    background: #1ed598;
+    color: #2c3e50;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   2. EFEK KARTU TERANGKAT (3D HOVER)
+   ========================================= */
+.card, .siswa-card, .galeri-item {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover, .siswa-card:hover, .galeri-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   3. FIX TAMPILAN LIGHTBOX POP-UP GALERI
+   ========================================= */
+#lightboxModal.active {
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+.lightbox-content {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 90%;
+    max-height: 85vh;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .lightbox-content {
+    background: #2d2d2d;
+    color: #ffffff;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 65vh;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+/* =========================================
+   MODE ADMIN: TEMA GALAXY & BINTANG JATUH 🌌
+   ========================================= */
+body.admin-mode {
+    background: #050515 !important;
+    color: #ffffff !important;
+    position: relative;
+    transition: background 0.5s ease;
+}
+
+/* Latar Belakang Gradasi Galaxy */
+body.admin-mode::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    z-index: -2;
+}
+
+/* Animasi Bintang Jatuh 1 */
+body.admin-mode::after {
+    content: '';
+    position: fixed;
+    top: -50px;
+    left: 40%;
+    width: 3px;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,1));
+    border-radius: 50%;
+    filter: drop-shadow(0 0 8px #1ed598);
+    animation: bintangJatuh 2.5s infinite linear;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Efek Bintang-Bintang Kecil & Bintang Jatuh Ke-2 */
+@keyframes bintangJatuh {
+    0% {
+        transform: translateX(-200px) translateY(-100px) rotate(-35deg);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(500px) translateY(700px) rotate(-35deg);
+        opacity: 0;
+    }
+}
+
+/* Ubah Warna Kartu & Box Saat Mode Admin Galaxy Aktif */
+body.admin-mode .card, 
+body.admin-mode .siswa-card, 
+body.admin-mode .message-item {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(30, 213, 152, 0.4) !important;
+    color: white !important;
+    box-shadow: 0 0 15px rgba(30, 213, 152, 0.2);
+}
+
+body.admin-mode .message-item h4 {
+    color: #1ed598 !important;
+}
+/* =========================================
+   FIX KONTRAS JADWAL & PIKET SAAT MODE ADMIN 🌌
+   ========================================= */
+/* Bikin semua teks di bagian Jadwal & Piket jadi Putih Cerah */
+body.admin-mode #jadwal, 
+body.admin-mode #piket,
+body.admin-mode #jadwal *, 
+body.admin-mode #piket * {
+    color: #ffffff !important;
+}
+
+/* Judul Hari / Header di Jadwal & Piket jadi Hijau Menyala (Neon) */
+body.admin-mode #jadwal h2, 
+body.admin-mode #jadwal h3,
+body.admin-mode #piket h2, 
+body.admin-mode #piket h3,
+body.admin-mode #piket h4 {
+    color: #1ed598 !important;
+}
+
+/* Bikin Box / Tabel / Kartu Jadwal & Piket Transparan Berpendar */
+body.admin-mode table,
+body.admin-mode th,
+body.admin-mode td,
+body.admin-mode .jadwal-box,
+body.admin-mode .jadwal-card,
+body.admin-mode .piket-card,
+body.admin-mode .piket-box,
+body.admin-mode .piket-item {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(30, 213, 152, 0.4) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Warna Khusus Header Tabel (Jika Pakai Tabel) */
+body.admin-mode th {
+    background: rgba(30, 213, 152, 0.25) !important;
+    color: #1ed598 !important;
+}
+/* =========================================
+   EFEK TAMBAHAN: BULAN SABIT & SPARKLING ✨
+   ========================================= */
+
+/* 1. BULAN SABIT (CRESCENT MOON) MELAYANG */
+body.admin-mode header::before {
+    content: '';
+    position: fixed;
+    top: 70px;
+    right: 40px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    /* Menggunakan teknik shadow bundar untuk membentuk Bulan Sabit */
+    box-shadow: -14px 12px 0 0 #f1c40f;
+    filter: drop-shadow(0 0 15px rgba(241, 196, 15, 0.8));
+    z-index: 10;
+    pointer-events: none;
+    animation: bulanMelayang 4s ease-in-out infinite alternate;
+}
+
+/* Animasi Bulan Melayang Perlahan */
+@keyframes bulanMelayang {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-10px) rotate(6deg);
+    }
+}
+
+/* 2. EFEK SPARKLING (KILAUAN BINTANG) BERKELIP 1 */
+body.admin-mode header::after {
+    content: '✨';
+    position: fixed;
+    top: 130px;
+    right: 110px;
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 10px #1ed598);
+    z-index: 10;
+    pointer-events: none;
+    animation: kilauBintang 1.5s infinite ease-in-out alternate;
+}
+
+/* 3. EFEK SPARKLING KEDUA (DI SISI KIRI) */
+body.admin-mode nav::after {
+    content: '✨';
+    position: fixed;
+    top: 90px;
+    left: 40px;
+    font-size: 1.4rem;
+    filter: drop-shadow(0 0 12px #ffffff);
+    z-index: 10;
+    pointer-events: none;
+    animation: kilauBintang 2.2s infinite ease-in-out alternate-reverse;
+}
+
+/* Animasi Membesar & Berkelip Terang-Redup */
+@keyframes kilauBintang {
+    0% {
+        opacity: 0.2;
+        transform: scale(0.6) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.3) rotate(20deg);
+    }
+}
+
+/* 4. TAMBAHAN EFEK GLOWING/SPARKLING DI JUDUL HALAMAN */
+body.admin-mode h1, 
+body.admin-mode h2 {
+    text-shadow: 0 0 10px rgba(30, 213, 152, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+}
+/* =========================================
+   PENGOPTIMALAN LAYAR HP (RESPONSIVE MOBILE) 📱
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* 1. Rapikan Navigasi (Menu) agar tidak numpuk */
+    header {
+        padding: 10px 5px;
+    }
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    header nav a {
+        padding: 6px 12px;
+        font-size: 0.8rem; /* Teks menu lebih kecil di HP */
+        margin: 2px;
+    }
+
+    /* 2. Sesuaikan Ukuran Judul */
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+
+    /* 3. Rapikan Jarak Halaman (Padding) */
+    section {
+        padding: 20px 15px;
+    }
+
+    /* 4. Sesuaikan Kartu (Pengurus & Anggota) agar tidak kepanjangan/kekecilan */
+    .card, .siswa-card {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto 15px auto;
+    }
+
+    /* 5. Rapikan Tabel Jadwal & Piket (Biar bisa di-geser/scroll ke samping) */
+    table, .jadwal-box, .piket-box {
+        display: block;
+        width: 100%;
+        overflow-x: auto; /* Memunculkan scroll samping jika tabel terlalu lebar */
+        white-space: nowrap; 
+        font-size: 0.85rem;
+    }
+
+    /* 6. Sesuaikan Ukuran Pop-up Modal */
+    .modal-content, .admin-modal-box {
+        width: 95%;
+        padding: 15px;
+    }
+    .lightbox-content img {
+        max-height: 50vh; /* Gambar galeri lebih kecil di HP */
+    }
+
+    /* 7. Sesuaikan Posisi Bulan Sabit di Mode Admin agar tidak keluar layar */
+    body.admin-mode header::before {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        box-shadow: -8px 10px 0 0 #f1c40f;
+    }
+    
+    /* 8. Sesuaikan Tombol Floating (Dark Mode / Admin) */
+    #themeToggleBtn {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
+/* =========================================
+   STYLE UNTUK WAITING / LOADING SCREEN ⏳
+   ========================================= */
+.loader-content {
+    text-align: center;
+    width: 85%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.loader-icon {
+    font-size: 4rem;
+    animation: detakJantung 1.2s infinite alternate;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 15px #1ed598);
+}
+
+.loader-text {
+    color: #1ed598;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(30, 213, 152, 0.5);
+}
+
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #07dad6, #1ed598);
+    box-shadow: 0 0 15px #1ed598;
+    border-radius: 20px;
+    transition: width 0.1s linear;
+}
+
+.progress-text {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+@keyframes detakJantung {
+    0% { transform: scale(0.9); }
+    100% { transform: scale(1.15); }
+}
+/* =========================================
+   EASTER EGG: KUIS MTK & GALERI AIB 🤫
+   ========================================= */
+.rahasia-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+body.dark-mode .rahasia-box {
+    background: #2d2d2d;
+    color: white;
+}
+
+.soal-mtk {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: 600;
+}
+
+.soal-mtk input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.soal-mtk input:focus {
+    border-color: #e74c3c;
+}
+
+body.dark-mode .soal-mtk input {
+    background: #1a1a1a;
+    color: white;
+    border-color: #555;
+}
+
+.btn-rahasia {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-rahasia:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+.galeri-aib-tersembunyi {
+    margin-top: 20px;
+    animation: fadeSlideUp 0.8s ease-in-out;
+}
+/* =========================================
+   PERBAIKAN WARNA TEKS EASTER EGG (DARK / ADMIN GALAXY MODE) 🌌
+   ========================================= */
+
+/* Warna dasar kotak Kuis saat Mode Terang */
+.rahasia-box {
+    background: #ffffff;
+    color: #333333;
+    transition: all 0.3s ease;
+}
+
+.soal-mtk label {
+    color: #2c3e50;
+}
+
+/* 1. WARNA SAAT MODE GELAP ATAU MODE ADMIN AKTIF */
+body.dark-mode .rahasia-box,
+body.admin-mode .rahasia-box {
+    background: #161625 !important; /* Latar kotak agak gelap elegan */
+    color: #ffffff !important;        /* Warna teks utama putih */
+    border: 1px solid rgba(30, 213, 152, 0.4);
+    box-shadow: 0 0 15px rgba(30, 213, 152, 0.2);
+}
+
+/* 2. WARNA SOAL & TEKS PARAGRAF SAAT MODE ADMIN/DARK */
+body.dark-mode .soal-mtk label,
+body.admin-mode .soal-mtk label {
+    color: #ffffff !important; /* Teks soal 1, 2, 3 jadi putih terang */
+}
+
+body.dark-mode .rahasia-box p,
+body.admin-mode .rahasia-box p {
+    color: #e0e0e0 !important; /* Teks petunjuk jadi abu-abu terang */
+}
+
+/* 3. WARNA KOTAK INPUT JAWABAN SAAT MODE ADMIN/DARK */
+body.dark-mode .soal-mtk input,
+body.admin-mode .soal-mtk input {
+    background: #0b0b14 !important;
+    color: #1ed598 !important; /* Angka yang diketik berwarna hijau neon */
+    border: 1px solid #1ed598 !important;
+}
+
+body.dark-mode .soal-mtk input::placeholder,
+body.admin-mode .soal-mtk input::placeholder {
+    color: #777777 !important;
+}
+
+/* 4. WARNA JUDUL & DESKRIPSI GALERI AIB */
+body.dark-mode #rahasia .section-title,
+body.admin-mode #rahasia .section-title {
+    color: #1ed598 !important;
+}
+
+body.dark-mode .galeri-aib-tersembunyi p,
+body.admin-mode .galeri-aib-tersembunyi p {
+    color: #ffffff !important;
+}
